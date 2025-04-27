@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Stardew Valley cho Hà Thanh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stardewGreen: '#5e9e5e',
+                        stardewBrown: '#8b4513',
+                        stardewBlue: '#4a8fe7',
+                        stardewYellow: '#ffde7d',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .pixel-art {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        .dropdown-content {
+            display: none;
+            transition: all 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .season-btn {
+            transition: transform 0.2s;
+        }
+        .season-btn:hover {
+            transform: scale(1.05);
+        }
+        .tooltip {
+            position: relative;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .crop-card {
+            transition: all 0.3s ease;
+        }
+        .crop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-stardewBrown-100 font-sans">
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-stardewGreen to-stardewBlue text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="https://stardewvalley.net/wp-content/uploads/2016/12/stardew_icon.png" 
+                         alt="Stardew Valley Icon" 
+                         class="w-16 h-16 mr-4 pixel-art">
+                    <h1 class="text-3xl md:text-4xl font-bold">Hướng Dẫn Stardew Valley Cho <span class="text-stardewYellow">Hà Thanh</span></h1>
+                </div>
+                <div class="relative group">
+                    <button class="bg-stardewYellow hover:bg-yellow-500 text-stardewBrown font-bold py-2 px-4 rounded-lg flex items-center">
+                        Menu <i class="fas fa-chevron-down ml-2"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block z-10">
+                        <a href="#basics" class="block px-4 py-2 text-stardewBrown hover:bg-stardewGreen hover:text-white">Cơ Bản</a>
+                        <a href="#farming" class="block px-4 py-2 text-stardewBrown hover:bg-stardewGreen hover:text-white">Nông Nghiệp</a>
+                        <a href="#mining" class="block px-4 py-2 text-stardewBrown hover:bg-stardewGreen hover:text-white">Mỏ</a>
+                        <a href="#social" class="block px-4 py-2 text-stardewBrown hover:bg-stardewGreen hover:text-white">Quan Hệ</a>
+                        <a href="#calendar" class="block px-4 py-2 text-stardewBrown hover:bg-stardewGreen hover:text-white">Lịch Mùa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-stardewGreen to-green-800 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Chào mừng Hà Thanh đến với Stardew Valley!</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Trang web này được thiết kế đặc biệt để giúp bạn trở thành nông dân giỏi nhất thung lũng!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button id="startBtn" class="bg-stardewYellow hover:bg-yellow-500 text-stardewBrown font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105">
+                    <i class="fas fa-seedling mr-2"></i> Bắt Đầu Ngay
+                </button>
+                <button class="bg-white hover:bg-gray-200 text-stardewBrown font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105">
+                    <i class="fas fa-video mr-2"></i> Video Hướng Dẫn
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Basics Section -->
+    <section id="basics" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-stardewBrown">Những Điều Cơ Bản</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Day Cycle Card -->
+                <div class="bg-gradient-to-br from-stardewBlue to-blue-600 rounded-xl p-6 text-white shadow-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-clock text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Chu Kỳ Ngày</h3>
+                    <p>Mỗi ngày trong Stardew Valley kéo dài khoảng 13 phút thời gian thực. Bạn sẽ cần quản lý năng lượng và thời gian hiệu quả.</p>
+                </div>
+                
+                <!-- Energy Card -->
+                <div class="bg-gradient-to-br from-stardewGreen to-green-600 rounded-xl p-6 text-white shadow-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-bolt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Năng Lượng</h3>
+                    <p>Tất cả hành động đều tiêu tốn năng lượng. Bạn có thể phục hồi bằng cách ăn thức ăn hoặc lên giường ngủ trước 2 giờ sáng.</p>
+                </div>
+                
+                <!-- Inventory Card -->
+                <div class="bg-gradient-to-br from-stardewBrown to-yellow-800 rounded-xl p-6 text-white shadow-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-backpack text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Túi Đồ</h3>
+                    <p>Bạn bắt đầu với 12 ô chứa đồ. Có thể nâng cấp lên tối đa 36 ô. Nhớ quản lý túi đồ thông minh khi đi thăm dò!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farm Layout Section -->
+    <section class="py-12 bg-stardewBrown-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-stardewBrown">Bố Trí Nông Trại</h2>
+            
+            <div class="relative bg-white rounded-xl shadow-xl overflow-hidden">
+                <div class="absolute inset-0 bg-gray-100 flex items-center justify-center">
+                    <p class="text-gray-500 italic">Hình ảnh bản đồ nông trại sẽ hiển thị ở đây</p>
+                </div>
+                <div class="bg-black bg-opacity-50 text-white p-8 relative z-10 lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-stardewYellow">Mẹo bố trí nông trại hiệu quả</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-stardewGreen mr-2 mt-1"></i>
+                            <span>Dành khu vực gần nhà cho cây trồng cần chăm sóc hàng ngày</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-stardewGreen mr-2 mt-1"></i>
+                            <span>Đặt chuồng trại và cối xay gần nhau để tiện quản lý</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-stardewGreen mr-2 mt-1"></i>
+                            <span>Để lại khoảng trống giữa các khu vực để di chuyển dễ dàng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-stardewGreen mr-2 mt-1"></i>
+                            <span>Sử dụng hàng rào và lối đi lát đá để tăng thẩm mỹ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farming Guide Section -->
+    <section id="farming" class="py-12 bg-gradient-to-b from-stardewGreen to-green-700 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Hướng Dẫn Nông Nghiệp</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Trồng trọt là trái tim của Stardew Valley. Dưới đây là những cây trồng tốt nhất cho từng mùa!</p>
+            
+            <!-- Season Navigation -->
+            <div class="flex justify-center mb-12 overflow-x-auto pb-4">
+                <div class="flex space-x-2 md:space-x-4">
+                    <button onclick="showSeason('spring')" class="season-btn bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">
+                        <i class="fas fa-seedling mr-2"></i> Mùa Xuân
+                    </button>
+                    <button onclick="showSeason('summer')" class="season-btn bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md">
+                        <i class="fas fa-sun mr-2"></i> Mùa Hạ
+                    </button>
+                    <button onclick="showSeason('fall')" class="season-btn bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-md">
+                        <i class="fas fa-leaf mr-2"></i> Mùa Thu
+                    </button>
+                    <button onclick="showSeason('winter')" class="season-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+                        <i class="fas fa-snowflake mr-2"></i> Mùa Đông
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Spring Crops -->
+            <div id="spring-crops" class="season-content grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Crop Card 1 -->
+                <div class="crop-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="h-40 bg-green-100 flex items-center justify-center">
+                        <img src="https://stardewvalleywiki.com/mediawiki/images/8/8f/Strawberry.png" 
+                             alt="Strawberry" 
+                             class="h-32 pixel-art">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl text-stardewBrown mb-2 tooltip">
+                            Dâu Tây
+                            <span class="tooltip-text">Bán tại lễ hội mùa xuân (ngày 13)</span>
+                        </h3>
+                        <p><span class="font-semibold">Giá:</span> 100g (1 hạt)</p>
+                        <p><span class="font-semibold">Thời gian:</span> 8 ngày (tái sinh 4 ngày)</p>
+                        <p><span class="font-semibold">Lợi nhuận:</span> ~41g/ngày</p>
+                    </div>
+                </div>
+                
+                <!-- Crop Card 2 -->
+                <div class="crop-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="h-40 bg-green-100 flex items-center justify-center">
+                        <img src="https://stardewvalleywiki.com/mediawiki/images/9/9f/Cauliflower.png" 
+                             alt="Cauliflower" 
+                             class="h-32 pixel-art">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl text-stardewBrown mb-2">Súp Lơ</h3>
+                        <p><span class="font-semibold">Giá:</span> 80g (1 hạt)</p>
+                        <p><span class="font-semibold">Thời gian:</span> 12 ngày</p>
+                        <p><span class="font-semibold">Lợi nhuận:</span> ~36g/ngày</p>
+                    </div>
+                </div>
+                
+                <!-- Crop Card 3 -->
+                <div class="crop-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="h-40 bg-green-100 flex items-center justify-center">
+                        <img src="https://stardewvalleywiki.com/mediawiki/images/0/0f/Potato.png" 
+                             alt="Potato" 
+                             class="h-32 pixel-art">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl text-stardewBrown mb-2">Khoai Tây</h3>
+                        <p><span class="font-semibold">Giá:</span> 50g (1 hạt)</p>
+                        <p><span class="font-semibold">Thời gian:</span> 6 ngày</p>
+                        <p><span class="font-semibold">Lợi nhuận:</span> ~35g/ngày</p>
+                    </div>
+                </div>
+                
+                <!-- Crop Card 4 -->
+                <div class="crop-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <div class="h-40 bg-green-100 flex items-center justify-center">
+                        <img src="https://stardewvalleywiki.com/mediawiki/images/b/b5/Blue_Jazz.png" 
+                             alt="Blue Jazz" 
+                             class="h-32 pixel-art">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl text-stardewBrown mb-2">Hoa Jazz</h3>
+                        <p><span class="font-semibold">Giá:</span> 30g (1 hạt)</p>
+                        <p><span class="font-semibold">Thời gian:</span> 7 ngày</p>
+                        <p><span class="font-semibold">Lợi nhuận:</span> ~21g/ngày</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other seasons (hidden by default) -->
+            <div id="summer-crops" class="season-content hidden grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Summer crops would go here -->
+            </div>
+            
+            <div id="fall-crops" class="season-content hidden grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Fall crops would go here -->
+            </div>
+            
+            <div id="winter-crops" class="season-content hidden grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <i class="fas fa-snowflake text-blue-500 text-5xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-stardewBrown mb-2">Không có cây trồng!</h3>
+                    <p>Mùa đông không thể trồng cây thông thường. Hãy chăn nuôi, đào cổ vật hoặc đi mỏ!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="py-12 bg-stardewBrown-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-stardewBrown">Nâng Cấp Công Cụ</h2>
+            
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-4 text-stardewBlue">Lộ Trình Nâng Cấp Tối Ưu</h3>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><span class="font-semibold">Cuốc:</span> Ngày 2-3 để đào cổ vật</li>
+                            <li><span class="font-semibold">Rìu:</span> Ngày 4-5 để lấy gỗ</li>
+                            <li><span class="font-semibold">Bình tưới:</span> Trước mùa mưa</li>
+                            <li><span class="font-semibold">Cần câu:</span> Sau khi ổn định thu nhập</li>
+                        </ol>
+                    </div>
+                    <div class="bg-stardewGreen text-white p-8">
+                        <h3 class="text-xl font-bold mb-4">Chi Phí Nâng Cấp</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b border-white pb-2">
+                                <span>Đồng (1 cấp):</span>
+                                <span class="font-bold">2.000g + 5 quặng đồng</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white pb-2">
+                                <span>Sắt (2 cấp):</span>
+                                <span class="font-bold">5.000g + 5 quặng sắt</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white pb-2">
+                                <span>Vàng (3 cấp):</span>
+                                <span class="font-bold">10.000g + 5 quặng vàng</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Iridium (4 cấp):</span>
+                                <span class="font-bold">25.000g + 5 quặng iridium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mining Section -->
+    <section id="mining" class="py-12 bg-gradient-to-b from-gray-800 to-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Hướng Dẫn Đào Mỏ</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-stardewYellow">Mẹo Đào Mỏ</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-rocket text-blue-400 mr-2 mt-1"></i>
+                            <span>Tạo thang từ 99 đá để xuống tầng tiếp theo nhanh hơn</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bomb text-red-400 mr-2 mt-1"></i>
+                            <span>Bom là cách hiệu quả để khai thác quặng và đá nhanh</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-utensils text-green-400 mr-2 mt-1"></i>
+                            <span>Luôn mang theo thức ăn để phục hồi năng lượng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-day text-yellow-400 mr-2 mt-1"></i>
+                            <span>Ngày may mắn (xem truyền hình) giúp tìm thang dễ hơn</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg p-6 border-l-4 border-stardewYellow">
+                    <h3 class="text-xl font-bold mb-4">Sâu Động Vật Trong Mỏ</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="h-16 w-16 mx-auto mb-2 bg-gray-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-bug text-red-400 text-xl"></i>
+                            </div>
+                            <span class="text-sm">Bọ cánh cứng</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-16 w-16 mx-auto mb-2 bg-gray-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-spider text-green-400 text-xl"></i>
+                            </div>
+                            <span class="text-sm">Nhện đá</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-16 w-16 mx-auto mb-2 bg-gray-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-skull text-white text-xl"></i>
+                            </div>
+                            <span class="text-sm">Xương sống</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Guide Section -->
+    <section id="social" class="py-12 bg-stardewBlue-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-stardewBrown">Quan Hệ Với Cư Dân</h2>
+            
+            <div class="bg-white rounded-xl shadow-xl p-6 max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center mb-8">
+                    <div class="md:w-1/3 mb-4 md:mb-0">
+                        <div class="h-40 w-40 mx-auto rounded-full bg-gradient-to-b from-pink-300 to-pink-500 shadow-md flex items-center justify-center">
+                            <i class="fas fa-heart text-white text-5xl"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold mb-2 text-stardewBlue">Tăng Quan Hệ</h3>
+                        <p class="mb-4">Nói chuyện hàng ngày (+20 điểm) và tặng quà là cách tốt nhất để tăng quan hệ. Mỗi người có sở thích quà tặng khác nhau!</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Quà yêu thích</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Sinh nhật</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Sự kiện</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    <a href="#" class="villager-card bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg p-4 flex items-center shadow hover:shadow-md transition">
+                        <div class="h-12 w-12 rounded-full bg-pink-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-female text-pink-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Abigail</h4>
+                            <p class="text-sm text-gray-600">Thích: Thạch anh, Bánh sô-cô-la</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="villager-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 flex items-center shadow hover:shadow-md transition">
+                        <div class="h-12 w-12 rounded-full bg-blue-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-male text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sebastian</h4>
+                            <p class="text-sm text-gray-600">Thích: Obsidian, Sashimi</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="villager-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 flex items-center shadow hover:shadow-md transition">
+                        <div class="h-12 w-12 rounded-full bg-purple-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-female text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Leah</h4>
+                            <p class="text-sm text-gray-600">Thích: Salad, Rượu nho</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="py-12 bg-stardewYellow-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-stardewBrown">Lịch Sự Kiện Theo Mùa</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-t-xl overflow-hidden shadow-xl">
+                    <div class="grid grid-cols-7 bg-stardewGreen text-white font-bold text-center">
+                        <div class="p-3 border-r">Tuần 1</div>
+                        <div class="p-3 border-r">Tuần 2</div>
+                        <div class="p-3 border-r">Tuần 3</div>
+                        <div class="p-3">Tuần 4</div>
+                    </div>
+                    <div class="grid grid-cols-7">
+                        <div class="p-4 border-r border-b">
+                            <div class="font-semibold mb-2">Mùa Xuân</div>
+                            <p class="text-sm text-gray-600">13: Lễ hội hoa</p>
+                        </div>
+                        <div class="p-4 border-r border-b">
+                            <div class="font-semibold mb-2">Mùa Hạ</div>
+                            <p class="text-sm text-gray-600">11: Vũ hội ánh sáng</p>
+                        </div>
+                        <div class="p-4 border-r border-b">
+                            <div class="font-semibold mb-2">Mùa Thu</div>
+                            <p class="text-sm text-gray-600">16: Hội chợ Stardew</p>
+                        </div>
+                        <div class="p-4 border-b">
+                            <div class="font-semibold mb-2">Mùa Đông</div>
+                            <p class="text-sm text-gray-600">8: Lễ hội băng</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white shadow-xl p-6 rounded-b-xl">
+                    <h3 class="text-xl font-bold mb-4 text-stardewBlue">Mẹo Tham Gia Sự Kiện</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-gift text-pink-500 mr-2 mt-1"></i>
+                            <span>Lễ hội mùa xuân: Mua hạt dâu tây để trồng (lợi nhuận cao)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-fish text-blue-500 mr-2 mt-1"></i>
+                            <span>Hội chợ mùa thu: Chuẩn bị nhiều mặt hàng chất lượng để đạt điểm cao</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-crown text-yellow-500 mr-2 mt-1"></i>
+                            <span>Vũ hội ánh sáng: Nói chuyện với tất cả mọi người để có điểm quan hệ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-12 bg-stardewBrown-800 text-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-8">Bạn Cần Hỗ Trợ Thêm?</h2>
+            
+            <form class="bg-white rounded-xl shadow-xl p-6 text-stardewBrown">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">Tên của bạn</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                           id="name" type="text" placeholder="Hà Thanh">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="question">Câu hỏi của bạn</label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-32" 
+                              id="question" placeholder="Ví dụ: Làm thế nào để kiếm nhiều tiền trong mùa đông?"></textarea>
+                </div>
+                <div class="flex justify-center">
+                    <button class="bg-stardewGreen hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all transform hover:scale-105">
+                        <i class="fas fa-paper-plane mr-2"></i> Gửi Câu Hỏi
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stardewBrown-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-white hover:text-stardewYellow">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-stardewYellow">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-stardewYellow">
+                    <i class="fab fa-discord text-xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-stardewYellow">
+                    <i class="fab fa-youtube text-xl"></i>
+                </a>
+            </div>
+            <p class="mb-4">&copy; 2023 Hướng Dẫn Stardew Valley Cho Hà Thanh. Không liên kết với ConcernedApe.</p>
+            <p class="text-stardewBrown-400 text-sm">Thông tin trong trang này có thể thay đổi theo bản cập nhật game. Vui lòng kiểm tra wiki chính thức để biết thông tin mới nhất.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show season content function
+        function showSeason(season) {
+            // Hide all season contents
+            document.querySelectorAll('.season-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected season
+            document.getElementById(`${season}-crops`).classList.remove('hidden');
+            
+            // Update active button styling
+            document.querySelectorAll('.season-btn').forEach(btn => {
+                btn.classList.remove('bg-green-600', 'bg-red-600', 'bg-yellow-700', 'bg-blue-600');
+                btn.classList.add('bg-green-500', 'bg-red-500', 'bg-yellow-600', 'bg-blue-500');
+            });
+            
+            // Highlight current button
+            const btnMap = {
+                'spring': 0,
+                'summer': 1,
+                'fall': 2,
+                'winter': 3
+            };
+            const activeBtn = document.querySelectorAll('.season-btn')[btnMap[season]];
+            if (activeBtn) {
+                if (season === 'spring') activeBtn.classList.replace('bg-green-500', 'bg-green-600');
+                if (season === 'summer') activeBtn.classList.replace('bg-red-500', 'bg-red-600');
+                if (season === 'fall') activeBtn.classList.replace('bg-yellow-600', 'bg-yellow-700');
+                if (season === 'winter') activeBtn.classList.replace('bg-blue-500', 'bg-blue-600');
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Start button animation
+        const startBtn = document.getElementById('startBtn');
+        if (startBtn) {
+            startBtn.addEventListener('mouseenter', () => {
+                startBtn.querySelector('i').classList.add('fa-bounce');
+            });
+            startBtn.addEventListener('mouseleave', () => {
+                startBtn.querySelector('i').classList.remove('fa-bounce');
+            });
+        }
+        
+        // Initialize with spring crops visible
+        document.addEventListener('DOMContentLoaded', () => {
+            showSeason('spring');
+        });
+    </script>
+</body>
+</html>
